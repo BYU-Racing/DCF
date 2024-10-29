@@ -40,14 +40,15 @@ FlexCAN_T4<CAN2, RX_SIZE_256> dataCAN;
 
 DataCollector dc = DataCollector(ReservedIDs::DCFId, NUM_SENSORS, SENSORS, DEBUG);
 
-constexpr uint32_t BAUD_RATE = 112500;
+constexpr uint32_t CAN_BAUD_RATE = 250000;
+constexpr uint32_t SERIAL_BAUD_RATE = 9600;
 
 void setup() {
-    Serial.begin(BAUD_RATE);
+    Serial.begin(SERIAL_BAUD_RATE);
     motorCAN.begin();
-    motorCAN.setBaudRate(BAUD_RATE);
+    motorCAN.setBaudRate(CAN_BAUD_RATE);
     dataCAN.begin();
-    dataCAN.setBaudRate(BAUD_RATE);
+    dataCAN.setBaudRate(CAN_BAUD_RATE);
     dc.begin(&motorCAN, &dataCAN);
 }
 
