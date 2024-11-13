@@ -16,13 +16,13 @@ AnalogSensor throttle1 = AnalogSensor(ReservedIDs::Throttle1PositionId, THROTTLE
 AnalogSensor throttle2 = AnalogSensor(ReservedIDs::Throttle2PositionId, THROTTLE_1_CRITICALITY, THROTTLE_2_PIN, THROTTLE_INTERVAL);
 
 constexpr bool BRAKE_CRITICALITY = true;
-constexpr uint8_t BRAKE_PIN = 12;
+constexpr uint8_t BRAKE_PIN = 16;
 constexpr uint32_t BRAKE_INTERVAL = 15;
 
 AnalogSensor brake = AnalogSensor(ReservedIDs::BrakePressureId, BRAKE_CRITICALITY, BRAKE_PIN, BRAKE_INTERVAL);
 
 constexpr bool SWITCH_CRITICALITY = true;
-constexpr uint8_t SWITCH_PIN = 16;
+constexpr uint8_t SWITCH_PIN = 12;
 constexpr uint32_t SWITCH_INTERVAL = 15;
 
 DigitalSensor startSwitch = DigitalSensor(ReservedIDs::StartSwitchId, SWITCH_CRITICALITY, SWITCH_PIN, SWITCH_INTERVAL);
@@ -34,7 +34,7 @@ Sensor* SENSORS[] = {
     &brake,
     &startSwitch
 };
-constexpr bool DEBUG = true;
+constexpr bool DEBUG = false;
 FlexCAN_T4<CAN1, RX_SIZE_256> motorCAN;
 FlexCAN_T4<CAN2, RX_SIZE_256> dataCAN;
 
