@@ -5,25 +5,25 @@
 #include <DataCollector.h>
 
 constexpr bool THROTTLE_1_CRITICALITY = true;
-constexpr uint8_t THROTTLE_1_PIN = 39;
+constexpr uint8_t THROTTLE_1_PIN = 14;
 
 constexpr bool THROTTLE_2_CRITICALITY = true;
-constexpr uint8_t THROTTLE_2_PIN = 40;
+constexpr uint8_t THROTTLE_2_PIN = 15;
 
-constexpr uint32_t THROTTLE_INTERVAL = 10;
+constexpr uint32_t THROTTLE_INTERVAL = 15;
 
 AnalogSensor throttle1 = AnalogSensor(ReservedIDs::Throttle1PositionId, THROTTLE_1_CRITICALITY, THROTTLE_1_PIN, THROTTLE_INTERVAL);
 AnalogSensor throttle2 = AnalogSensor(ReservedIDs::Throttle2PositionId, THROTTLE_1_CRITICALITY, THROTTLE_2_PIN, THROTTLE_INTERVAL);
 
 constexpr bool BRAKE_CRITICALITY = true;
-constexpr uint8_t BRAKE_PIN = 21;
-constexpr uint32_t BRAKE_INTERVAL = 10;
+constexpr uint8_t BRAKE_PIN = 12;
+constexpr uint32_t BRAKE_INTERVAL = 15;
 
 AnalogSensor brake = AnalogSensor(ReservedIDs::BrakePressureId, BRAKE_CRITICALITY, BRAKE_PIN, BRAKE_INTERVAL);
 
 constexpr bool SWITCH_CRITICALITY = true;
-constexpr uint8_t SWITCH_PIN = 38;
-constexpr uint32_t SWITCH_INTERVAL = 10;
+constexpr uint8_t SWITCH_PIN = 16;
+constexpr uint32_t SWITCH_INTERVAL = 15;
 
 DigitalSensor startSwitch = DigitalSensor(ReservedIDs::StartSwitchId, SWITCH_CRITICALITY, SWITCH_PIN, SWITCH_INTERVAL);
 
