@@ -4,10 +4,10 @@
 #include <AnalogSensor.h>
 #include <DataCollector.h>
 
-constexpr bool THROTTLE_1_CRITICALITY = false;
+constexpr bool THROTTLE_1_CRITICALITY = true;
 constexpr uint8_t THROTTLE_1_PIN = 18;
 
-constexpr bool THROTTLE_2_CRITICALITY = false;
+constexpr bool THROTTLE_2_CRITICALITY = true;
 constexpr uint8_t THROTTLE_2_PIN = 19;
 
 constexpr uint32_t THROTTLE_INTERVAL = 100;
@@ -15,33 +15,34 @@ constexpr uint32_t THROTTLE_INTERVAL = 100;
 AnalogSensor throttle1 = AnalogSensor(ReservedIDs::Throttle1PositionId, THROTTLE_1_CRITICALITY, THROTTLE_1_PIN, THROTTLE_INTERVAL);
 AnalogSensor throttle2 = AnalogSensor(ReservedIDs::Throttle2PositionId, THROTTLE_1_CRITICALITY, THROTTLE_2_PIN, THROTTLE_INTERVAL);
 
-constexpr bool BRAKE_CRITICALITY = false;
+constexpr bool BRAKE_CRITICALITY = true;
 constexpr uint8_t BRAKE_PIN = 20;
 constexpr uint32_t BRAKE_INTERVAL = 100;
 
 AnalogSensor brake = AnalogSensor(ReservedIDs::BrakePressureId, BRAKE_CRITICALITY, BRAKE_PIN, BRAKE_INTERVAL);
 
-constexpr bool SWITCH_CRITICALITY = false;
-constexpr uint8_t SWITCH_PIN = 16;
+constexpr bool SWITCH_CRITICALITY = true;
+constexpr uint8_t SWITCH_PIN = 21;
 constexpr uint32_t SWITCH_INTERVAL = 100;
 
 DigitalSensor startSwitch = DigitalSensor(ReservedIDs::StartSwitchId, SWITCH_CRITICALITY, SWITCH_PIN, SWITCH_INTERVAL);
 
 
-// constexpr bool DATA_CRITICALITY = false;
-// constexpr uint8_t DATA_PIN = 13; // TBD
-// constexpr uint32_t DATA_INTERVAL = 100;
+constexpr bool DATA_CRITICALITY = false;
+constexpr uint8_t DATA_PIN = 13; // TBD
+constexpr uint32_t DATA_INTERVAL = 100;
 
-// DigitalSensor dataSwitch = DigitalSensor(ReservedIDs::DataSwitchId, DATA_CRITICALITY, DATA_PIN, DATA_INTERVAL);
+DigitalSensor dataSwitch = DigitalSensor(ReservedIDs::DataSwitchId, DATA_CRITICALITY, DATA_PIN, DATA_INTERVAL);
 
-constexpr size_t NUM_SENSORS = 4;
+constexpr size_t NUM_SENSORS = 5;
 Sensor* SENSORS[] = {
     &throttle1,
     &throttle2,
     &brake,
     &startSwitch,
+    &dataSwitch,
 };
-constexpr bool DEBUG = true;
+constexpr bool DEBUG = false;
 FlexCAN_T4<CAN1, RX_SIZE_256> motorCAN;
 FlexCAN_T4<CAN2, RX_SIZE_256> dataCAN;
 
